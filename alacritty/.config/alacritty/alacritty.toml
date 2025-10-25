@@ -1,0 +1,31 @@
+[terminal.shell]
+program = "/bin/zsh"
+
+[window]
+decorations = "None"
+opacity = 0.8
+dynamic_title = true
+
+[colors]
+[colors.normal]
+black   ='#000004'
+red     ='#b32036'
+green   ='#339947'
+yellow  ='#c9aa1e'
+blue    ='#5247cf'
+magenta ='#62119c'
+cyan    ='#08c2b8'
+white   ='#b4b4b9'
+
+[colors.bright]
+black   ='#020221'
+red     ='#db0b2a'
+green   ='#03ad25'
+yellow  ='#edc40e'
+blue    ='#5746ff'
+magenta ='#b44df0'
+cyan    ='#81f0f0'
+white   ='#f8f8ff'
+
+[terminal]
+
