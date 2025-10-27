@@ -18,13 +18,13 @@ require("lazy").setup({
 	{"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate"
 	},
-	{"neovim/nvim-lspconfig"},
 	{"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = {"nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons"},
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
 	},
+	{"neovim/nvim-lspconfig"},
 	{"ryleelyman/latex.nvim"},
 	{"EdenEast/nightfox.nvim"},
 	{"navarasu/onedark.nvim"},
@@ -37,15 +37,16 @@ require('nvim-treesitter.configs').setup({
 })
 
 --LSP Config
-local lspconfig = require('lspconfig')
-lspconfig.bashls.setup{}		--Bash
-lspconfig.ccls.setup{} 			--C/C++
-lspconfig.rust_analyzer.setup{}	--Rust
-lspconfig.pyright.setup{}		--Python
-lspconfig.lua_ls.setup{}		--Lua
-lspconfig.quick_lint_js.setup{}	--JavaScript
-lspconfig.html.setup{}			--HTML
-lspconfig.cssls.setup{}			--CSS
+vim.lsp.enable({
+	'bashls',			--Bash
+	'ccls',				--C/C++
+	'rust_analyzer',	--Rust
+	'pyright',			--Python
+	'lua_ls',			--Lua
+	'quick_lint_js',	--Javascript
+	'html',				--html
+	'cssls'				--css
+})
 
 --Markdown Renderer Config
 require('render-markdown').setup({
