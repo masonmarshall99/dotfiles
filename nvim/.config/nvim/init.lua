@@ -28,6 +28,20 @@ require("lazy").setup({
 	{"ryleelyman/latex.nvim"},
 	{"EdenEast/nightfox.nvim"},
 	{"navarasu/onedark.nvim"},
+	{"hrsh7th/nvim-cmp", 
+		dependencies = {"hrsh7th/cmp-nvim-lsp",
+						"hrsh7th/cmp-buffer",
+						"hrsh7th/cmp-path",
+						"hrsh7th/cmp-vsnip",
+						"hrsh7th/vim-vsnip",
+			},
+		---@module 'nvim-cmp'
+	},
+	{"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end
+	}
 })
 
 --Treesitter Config
@@ -36,17 +50,54 @@ require('nvim-treesitter.configs').setup({
 	highlight = { enable = true },
 })
 
---LSP Config
-vim.lsp.enable({
-	'bashls',			--Bash
-	'ccls',				--C/C++
-	'rust_analyzer',	--Rust
-	'pyright',			--Python
-	'lua_ls',			--Lua
-	'quick_lint_js',	--Javascript
-	'html',				--html
-	'cssls'				--css
+--Completion Config
+local cmp = require('cmp')
+cmp.setup({
+	
+	snippet = {
+		expand =  function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
+	},
+	
+	mapping = cmp.mapping.preset.insert({
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>'] = cmp.mapping.confirm({select = true}),
+	}),
+	
+	sources = cmp.config.sources({
+		{ name = "copilot_cmp" },
+		{ name = 'nvim_lsp' },
+		{ name = 'vsnip' },
+	}, {
+		{ name = 'buffer' },
+	}),
+
 })
+
+--LSP Config
+local servers = {
+	'bashls',		--Bash
+	'ccls',			--C/C++
+	'rust_analyzer',	--Rust
+	'pyright',		--Python
+	'lua_ls',		--Lua
+	'quick_lint_js',	--Javascript
+	'html',			--html
+	'cssls'			--css
+}
+
+vim.lsp.enable(servers)
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+vim.lsp.config('*', {
+	capabilities = capabilities,
+})
+
+vim.diagnostic.config({ virtual_text = true })
 
 --Markdown Renderer Config
 require('render-markdown').setup({
