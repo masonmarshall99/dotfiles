@@ -233,6 +233,9 @@ bindsym XF86AudioPlay exec "playerctl play-pause"
 bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
+# Mute Mic
+bindsym Scroll_Lock exec "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+
 #
 # Status Bar:
 #

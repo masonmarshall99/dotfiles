@@ -7,7 +7,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
     "modules-right": ["pulseaudio", "network", "clock", "tray"],
     // Modules configuration
@@ -52,7 +52,7 @@
 		}
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "interface": "wlp*", // (Optional) To force the use of this interface
         "format-wifi": " {essid}  ({signalStrength}%)   ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} \n{ipaddr}",
@@ -61,12 +61,12 @@
 		"on-click": "nm-connection-editor"
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": " {desc}  {volume}%  {icon} ",
-        "format-bluetooth": " {desc} {volume}% {icon}  ",
-        "format-bluetooth-muted": " {desc}  {icon}  ",
-        "format-muted": " {desc}  ",
-        "format-source": " {volume}%  ",
+        "scroll-step": 5, // %, can be a float
+        "format": " {desc} {volume}% {icon}  {format_source} ",
+        "format-bluetooth": " {desc} {volume}% {icon}   {format_source} ",
+        "format-bluetooth-muted": " {desc}  {icon}   {format_source} ",
+        "format-muted": " {desc}   {format_source}",
+        "format-source": " {volume}% ",
         "format-source-muted": "  ",
         "format-icons": {
             "headphone": "",
@@ -79,18 +79,6 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
 },
 {
 	// Secondary Bar Display - Output to Secondary Display (HDMI-A-1)
@@ -176,17 +164,5 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
 }
 ]
