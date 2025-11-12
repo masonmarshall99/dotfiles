@@ -46,6 +46,7 @@ require("lazy").setup({
 
 --Treesitter Config
 require('nvim-treesitter.configs').setup({
+	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 	auto_install = true,
 	highlight = { enable = true },
 })
@@ -53,19 +54,17 @@ require('nvim-treesitter.configs').setup({
 --Completion Config
 local cmp = require('cmp')
 cmp.setup({
-	
 	snippet = {
 		expand =  function(args)
 			vim.fn["vsnip#anonymous"](args.body)
 		end,
 	},
-	
 	mapping = cmp.mapping.preset.insert({
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({select = true}),
+		['<Tab>'] = cmp.mapping.confirm({select = true}),
 	}),
 	
 	sources = cmp.config.sources({
@@ -95,6 +94,16 @@ vim.lsp.enable(servers)
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config('*', {
 	capabilities = capabilities,
+})
+
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			}
+		}
+	}
 })
 
 vim.diagnostic.config({ virtual_text = true })
