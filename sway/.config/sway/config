@@ -236,6 +236,9 @@ bindsym XF86AudioPrev exec "playerctl previous"
 # Mute Mic
 bindsym Scroll_Lock exec "bash ~/.config/sway/custom/mic_toggle/toggle.sh"
 
+# Numlock Default
+input * xkb_numlock enabled
+
 #
 # Status Bar:
 #
