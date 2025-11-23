@@ -46,7 +46,6 @@ require("lazy").setup({
 
 --Treesitter Config
 require('nvim-treesitter.configs').setup({
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
 	auto_install = true,
 	highlight = { enable = true },
 })
@@ -78,6 +77,10 @@ cmp.setup({
 })
 
 --LSP Config
+vim.diagnostic.config({
+	update_in_insert = true,
+})
+
 local servers = {
 	'bashls',		--Bash
 	'ccls',			--C/C++
