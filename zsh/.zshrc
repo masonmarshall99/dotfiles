@@ -1,6 +1,5 @@
 alias vim='nvim'
-alias ls='exa -ll'
-alias hudkit='/tmp/hudkit/hudkit'
+alias tree='tree --gitignore'
 
 (openrgb -p Red.orp > /dev/null &)
 #sudo chmod 666 /sys/bus/usb/drivers/kraken/3-6.1\:1.0/color
