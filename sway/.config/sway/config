@@ -36,7 +36,7 @@ default_orientation auto
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output HDMI-A-1 resolution 1920x1080 scale 0.75 transform 90 pos 0 0
+#output HDMI-A-1 resolution 1920x1080 scale 0.75 transform 90 pos 0 0
 output DP-3 resolution 2560x1440@169.831Hz adaptive_sync on pos 1440 930
 exec_always swaybg -o '*' -m fill -i /home/mason/Pictures/Wallpapers/cloudstorm.png
 exec xrandr --output DP-3 --primary
@@ -146,7 +146,7 @@ exec xrandr --output DP-3 --primary
     # We just use 1-10 as the default.
 
 	#Workspace Monitor Bindings
-	workspace '~' output HDMI-A-1
+#	workspace '~' output HDMI-A-1
 	workspace 1 output DP-3
 	workspace 2 output DP-3
 	workspace 3 output DP-3
@@ -264,5 +264,10 @@ default_border none
 default_floating_border none
 gaps inner 3
 gaps outer 3
+
+# Session Management
+exec systemctl --user start sway-session.service
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 include /etc/sway/config.d/*
