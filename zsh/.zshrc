@@ -2,10 +2,10 @@ alias vim='nvim'
 alias tree='tree --gitignore'
 alias fetch='fastfetch'
 
-(openrgb -p Red.orp > /dev/null &)
+#(openrgb -p Red.orp > /dev/null &)
 #sudo chmod 666 /sys/bus/usb/drivers/kraken/3-6.1\:1.0/color
 #sudo echo ff0000 > /sys/bus/usb/drivers/kraken/3-6.1\:1.0/color
-python ~/Scripts/MonitorSettings/setDefault.py
+#python ~/Scripts/MonitorSettings/setDefault.py
 
 function precmd() {
 	window_title="\033]0;${PWD}\007"
@@ -34,13 +34,13 @@ bindkey -v
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh/
+ZSH=/home/mason/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="custom" # set by `omz`
+ZSH_THEME="fwalch" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

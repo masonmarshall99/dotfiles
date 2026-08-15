@@ -1,6 +1,6 @@
 [{
 	// Main Bar Display - Output to Main Display (DP-3)
-	"output": "DP-3",
+	"output": "eDP-1",
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
@@ -11,6 +11,9 @@
     "modules-center": ["sway/window"],
     "modules-right": ["pulseaudio", "network", "clock", "tray"],
     // Modules configuration
+	"sway/workspaces": {
+		"format": "     {name}     "
+	},
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -80,89 +83,4 @@
         "on-click": "pavucontrol"
     },
 },
-{
-	// Secondary Bar Display - Output to Secondary Display (HDMI-A-1)
-	"output": "HDMI-A-1",
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["clock", "tray"],
-    // Modules configuration
-	"sway/workspaces": {
-		"format-icons": {"`": "~"}
-	},
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 10
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-		"interval": 30,
-		"format": "   {:%A, %e %b %Y  -  %I:%M %p }  ",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}",
-		"calendar": {
-			"mode": "year",
-			"mode-mon-col": 3,
-			"weeks-pos": "left",
-			"format": {
-				"today": "<span color='cyan'><b>{}</b></span>",
-				"days": "<span color='#a0a0d0'>{}</span>",
-				"weeks": "<span color='#a02858'>{:%W}</span>",
-				"weekdays": "<span color='white'>{}</span>",
-				"months": "<span color='white'>{}</span>"
-			}
-		}
-    },
-   "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid}  ({signalStrength}%)   ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": " {desc}  {volume}%  {icon} ",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-}
 ]
