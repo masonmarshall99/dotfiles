@@ -249,7 +249,7 @@ exec_always /bin/bash ~/.config/waybar/run.sh
 #exec xembedsniproxy # Not available for Fedora
 
 # Dropbox
-# exec_always dropbox # Fedora Dropbox package autostarts
+exec_always dropbox start
 
 #
 # Notifications:

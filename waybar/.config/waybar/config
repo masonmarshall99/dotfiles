@@ -9,7 +9,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "clock", "tray"],
+    "modules-right": ["pulseaudio", "network", "clock", "battery", "tray"],
     // Modules configuration
 	"sway/workspaces": {
 		"format": "     {name}     "
@@ -38,6 +38,14 @@
         "icon-size": 21,
         "spacing": 10
     },
+	"battery": {
+		"states": {
+			"warning": 15,
+			"critical": 5,
+		},
+		"format": " {icon}  {capacity}% ",
+		"format-icons": ["", "", "", "", ""],
+	},
     "clock": {
         // "timezone": "America/New_York",
 		"interval": 30,
@@ -68,10 +76,10 @@
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": " {desc} {volume}% {icon}  {format_source} ",
-        "format-bluetooth": " {desc} {volume}% {icon}   {format_source} ",
-        "format-bluetooth-muted": " {desc}  {icon}   {format_source} ",
-        "format-muted": " {desc}   {format_source}",
+        "format": " {volume}% {icon}  {format_source} ",
+        "format-bluetooth": " {volume}% {icon}   {format_source} ",
+        "format-bluetooth-muted": "  {icon}   {format_source} ",
+        "format-muted": "   {format_source}",
         "format-source": " {volume}% ",
         "format-source-muted": "  ",
         "format-icons": {
@@ -83,7 +91,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
     },
 },
 ]

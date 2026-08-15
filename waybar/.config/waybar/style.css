@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "FontAwesome", Roboto,  sans-serif;
+    font-family: "Font Awesome Free", Roboto,  sans-serif;
     font-size: 14px;
 	border-radius: 0.6em;
 }
@@ -129,24 +129,29 @@ button:hover {
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: rgba(200,200,200,0.1);
+    color: #ffffff;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: #afffaf;
+    background-color: rgba(200,200,200,0.1);
+}
+
+#battery.warning:not(.charging) {
+	color: #ffff6f;
+	background-color: rgba(200,200,200,0.1);
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: rgba(200,200,200,0.1);
+        color: #ef2f2f;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
+    background-color: rgba(200,200,200,0.1);
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
