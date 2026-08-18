@@ -6,7 +6,6 @@
 
 
 ### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -14,16 +13,16 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
 
-# Wofi
+# Terminal
+set $term alacritty
+
+# Application Launcher
 set $menu wofi --show drun
 
-default_orientation auto
+# Theming
+set $sway-gtk-theme 'Materia-dark-compact'
+set $sway-icon-theme 'neo-candy-icons'
 
 ### Output configuration
 #
@@ -243,13 +242,17 @@ input * xkb_numlock enabled
 # Status Bar:
 #
 # See ~/.config/waybar/config for waybar configuration
-exec_always /bin/bash ~/.config/waybar/run.sh
+exec waybar
+layer_effects "waybar" {
+	blur enable;
+	blur_passes 1;
+}
 
 # Embedding X/Wine Tray Icons into the tray
 #exec xembedsniproxy # Not available for Fedora
 
 # Dropbox
-exec_always dropbox start
+exec dropbox start
 
 #
 # Notifications:
@@ -260,10 +263,19 @@ exec_always /bin/bash ~/.config/dunst/run.sh
 #
 # Aesthetics Config:
 #
+default_orientation auto
 default_border none
 default_floating_border none
 gaps inner 3
 gaps outer 3
+
+# Blur
+blur enable
+blur_passes 6
+
+# Theming
+exec_always dconf write /org/gnome/desktop/interface/gtk-theme "$sway-gtk-theme"
+exec_always dconf write /org/gnome/desktop/interface/icon-theme "$sway-icon-theme"
 
 # Session Management
 #exec systemctl --user start sway-session.service
