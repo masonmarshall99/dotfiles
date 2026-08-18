@@ -6,7 +6,6 @@
 
 
 ### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -14,16 +13,16 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
 
-# Wofi
+# Terminal
+set $term alacritty
+
+# Application Launcher
 set $menu wofi --show drun
 
-default_orientation auto
+# Theming
+set $sway-gtk-theme 'Materia-dark-compact'
+set $sway-icon-theme 'neo-candy-icons'
 
 ### Output configuration
 #
@@ -243,13 +242,15 @@ input * xkb_numlock enabled
 # Status Bar:
 #
 # See ~/.config/waybar/config for waybar configuration
+# exec_always is to ensure that waybar is always reloaded
+# with sway.
 exec_always /bin/bash ~/.config/waybar/run.sh
 
 # Embedding X/Wine Tray Icons into the tray
 exec xembedsniproxy
 
 # Dropbox
-exec_always dropbox
+exec dropbox
 
 #
 # Notifications:
@@ -260,10 +261,14 @@ exec_always /bin/bash ~/.config/dunst/run.sh
 #
 # Aesthetics Config:
 #
+default_orientation auto
 default_border none
 default_floating_border none
 gaps inner 3
 gaps outer 3
+
+exec_always dconf write /org/gnome/desktop/interface/gtk-theme "$sway-gtk-theme"
+exec_always dconf write /org/gnome/desktop/interface/icon-theme "$sway-icon-theme"
 
 # Session Management
 exec systemctl --user start sway-session.service
