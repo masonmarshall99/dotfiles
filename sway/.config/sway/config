@@ -242,9 +242,11 @@ input * xkb_numlock enabled
 # Status Bar:
 #
 # See ~/.config/waybar/config for waybar configuration
-# exec_always is to ensure that waybar is always reloaded
-# with sway.
-exec_always /bin/bash ~/.config/waybar/run.sh
+exec waybar
+layer_effects "waybar" {
+	blur enable;
+	blur_passes 1;
+}
 
 # Embedding X/Wine Tray Icons into the tray
 exec xembedsniproxy
@@ -267,6 +269,11 @@ default_floating_border none
 gaps inner 3
 gaps outer 3
 
+# Blur
+blur enable
+blur_passes 6
+
+# Theming
 exec_always dconf write /org/gnome/desktop/interface/gtk-theme "$sway-gtk-theme"
 exec_always dconf write /org/gnome/desktop/interface/icon-theme "$sway-icon-theme"
 
