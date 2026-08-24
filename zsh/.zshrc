@@ -34,7 +34,7 @@ bindkey -v
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH=/home/mason/.oh-my-zsh
+ZSH=/usr/share/zsh/site-contrib/oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
