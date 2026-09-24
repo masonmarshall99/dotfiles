@@ -21,7 +21,7 @@ set $term alacritty
 set $menu wofi --show drun
 
 # Theming
-set $sway-gtk-theme 'Materia-dark-compact'
+set $sway-gtk-theme 'Materia-light'
 set $sway-icon-theme 'neo-candy-icons'
 
 ### Output configuration
