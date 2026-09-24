@@ -58,7 +58,7 @@
         "tooltip-format": "{ifname} via {gwaddr} \n{ipaddr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-		"on-click": "nm-connection-editor"
+		"on-click": "alacritty --class nmtui -e bash -lc 'nmtui'"
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
