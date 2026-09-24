@@ -9,7 +9,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
-    "modules-right": ["pulseaudio", "network", "clock", "battery", "tray"],
+    "modules-right": ["wireplumber", "network", "clock", "battery", "tray"],
     // Modules configuration
 	"sway/workspaces": {
 		"format": "     {name}     "
@@ -74,7 +74,7 @@
         "format-disconnected": "Disconnected ⚠",
 		"on-click": "nm-connection-editor"
     },
-    "pulseaudio": {
+    "wireplumber": {
         "scroll-step": 5, // %, can be a float
         "format": " {volume}% {icon}  {format_source} ",
         "format-bluetooth": " {volume}% {icon}   {format_source} ",
@@ -91,7 +91,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol",
+        "on-click": "helvum",
     },
 },
 ]
